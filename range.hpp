@@ -5,16 +5,24 @@ namespace itertools
 {
 template<typename T> 
 class range{
+    /*
+    private:
+    T t1;
+    T t2;
+    */
     public:
 
-T t1;
-T t2;
+    T t1;
+    T t2;
 
-range<T>(const T t0,const T t3):
+    range<T>(const T t0,const T t3):
     t1(t0),t2(t3)
-{}
+    {}
 
 class iterator{
+    private:
+    //T t;
+
     public:
     T t;
 
@@ -22,7 +30,7 @@ class iterator{
         t(other)
     {}
 
-   iterator& operator ++(){
+    iterator& operator ++(){
        t++;
        return *this;
     }
@@ -31,20 +39,31 @@ class iterator{
         return t != t0.t;
     }
     
-    T operator *(){
+    auto operator *(){
         return t;
     }
 
+        };
+        /*
+        
+    class pair{
+        private:
+        typename K k;
+        typename E e;
 
+        public:
+        pair(const range& r):
+        k(r.t1),e(r.t2){}
 
-};
-
-iterator begin(){
+    };
+        
+    */
+    iterator begin(){
     return range<T>::iterator(t1);
-}
-iterator end(){
+    }
+    iterator end(){
     return range<T>::iterator(t2);
-}
+    }
 
 
 
