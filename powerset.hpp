@@ -27,7 +27,8 @@ class powerset{
     }
 
     iterator& operator ++(){
-        if (it1 != it){
+        bool not_equal = (it1 != it);
+        if (!not_equal){
         ++it1;
         bool b = (it1 != it);
         if (!b)
@@ -39,6 +40,7 @@ class powerset{
         }
         return *this;
     }
+        ++it;
         return *this;
     }
 
