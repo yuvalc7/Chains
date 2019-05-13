@@ -9,7 +9,7 @@ class powerset{
     T t;
     
     public:
-   // T t;
+    //T t;
     powerset<T>(const T t0) : t(t0){}
 
     class iterator{
@@ -18,8 +18,7 @@ class powerset{
     typename T::iterator it;
     typename T::iterator it1;
 
-    public:    
-        
+    
     iterator(typename T::iterator t0) :
     it(t0) , it1(t0) {}
 
@@ -28,9 +27,9 @@ class powerset{
     }
 
     iterator& operator ++(){
-        if (it1-it == 0){
+        if (it1 != it){
         ++it1;
-        if (it1 - it == 2)
+        if (it1.t != 2 + it.t)
         {
             ++it;
         }
