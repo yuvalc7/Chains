@@ -18,6 +18,8 @@ class powerset{
     typename T::iterator it;
     typename T::iterator it1;
 
+    public:    
+        
     iterator(typename T::iterator t0) :
     it(t0) , it1(t0) {}
 
