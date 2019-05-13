@@ -29,7 +29,8 @@ class powerset{
     iterator& operator ++(){
         if (it1 != it){
         ++it1;
-        if (it1.t != 2 + it.t)
+        bool b = (it1 != it);
+        if (!b)
         {
             ++it;
         }
