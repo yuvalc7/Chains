@@ -4,12 +4,12 @@
 namespace itertools{
 template <typename T>
 class powerset{
-    /*
+    
     private:
     T t;
-    */
+    
     public:
-    T t;
+   // T t;
     powerset<T>(const T t0) : t(t0){}
 
     class iterator{
