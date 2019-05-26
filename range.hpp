@@ -11,7 +11,7 @@ class range{
     const T _end;
 
     public:
-    range(const T& start,const T& end):
+    range(const T &start,const T &end):
     _start(start),_end(end)
     {}
 
