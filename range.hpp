@@ -56,7 +56,7 @@ class iterator{
 };
 
 template<typename T> range<T> range(T _start, T _end) {
-    return Itrange<T>(_start,_end);
+    return range<T>(_start,_end);
 }
 
 
