@@ -3,49 +3,48 @@
 
 namespace itertools
 {
-template<typename T> 
+template<typename T>
 class range{
-    /*
+
     private:
-    T t1;
-    T t2;
-    */
+    T _start;
+    T _end;
+
     public:
-
-    T t1;
-    T t2;
-
-    range<T>(const T t0,const T t3):
-    t1(t0),t2(t3)
+    range(const T start,const T end):
+    _start(start),_end(end)
     {}
 
 class iterator{
     private:
-    //T t;
+    T current;
 
     public:
-    T t;
-
-    iterator(T other):
-        t(other)
+    //constructor
+    iterator(T o):
+        current(o)
     {}
 
     iterator& operator ++(){
-       t++;
+       current++;
        return *this;
     }
-    
-    bool operator !=(const iterator& t0){
-        return t != t0.t;
-    }
-    
-    auto operator *(){
-        return t;
+
+    bool operator ==(const iterator& e) const{
+       return current == e.current;
     }
 
-        };
+    bool operator !=(const iterator& t0)const{
+        return current != t0.current;
+    }
+
+    auto operator *(){
+        return current;
+    }
+};
+
         /*
-        
+
     class pair{
         private:
         typename K k;
@@ -56,13 +55,13 @@ class iterator{
         k(r.t1),e(r.t2){}
 
     };
-        
+
     */
-    iterator begin(){
-    return range<T>::iterator(t1);
+    iterator begin() const{
+    return iterator(_start);
     }
-    iterator end(){
-    return range<T>::iterator(t2);
+    iterator end() const{
+    return iterator(_end);
     }
 
 

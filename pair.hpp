@@ -5,8 +5,7 @@ using namespace std;
 
 namespace itertools
 {
-
-template<typename T,typename E> 
+template<typename T,typename E>
 class pair{
 
     public:
@@ -18,9 +17,6 @@ class pair{
 
     friend ostream& operator<<(ostream& os, const pair& p){
         os << p.t << "," << p.e;
-        //os << ",";
-        //string printUnit = to_string(*t) + "," + to_string(*e);
-        //os << p.e;
         return os;
     }
 };

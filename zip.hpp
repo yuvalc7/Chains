@@ -20,7 +20,7 @@ template <typename T,typename E>
 
     private:
     typename T::iterator lit;
-    typename E::iterator rit; 
+    typename E::iterator rit;
 
     public:
 
@@ -39,11 +39,10 @@ template <typename T,typename E>
     }
 
     auto operator *(){
-        //return pair(lit.t,rit.t);
-        return pair(*lit,*rit);
+        return pair<T,E>(*lit,*rit);
     }
-        
-        };
+
+};
 
     iterator begin(){
             return iterator(t.begin(),e.begin());

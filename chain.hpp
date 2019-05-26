@@ -1,5 +1,5 @@
 #include "range.hpp"
-//#include "pair.hpp"
+
 using namespace std;
 
 namespace itertools{
@@ -7,61 +7,57 @@ namespace itertools{
 template <typename T,typename E>
  class chain{
      private:
-     T t;
-     E e;
+     T first;
+     E sec;
 
      public:
 
-     chain<T,E>(const T t0 , const E e0):
-     t(t0),e(e0){}
-
+     chain(const T _first , const E _sec):
+     first(_first),sec(_sec){}
+    template<typename F , typename S>
     class iterator{
 
     private:
-    typename T::iterator lit;
-    typename T::iterator end_lit;
-    typename E::iterator rit; 
-
+    F first_iterator; // It for the first "range"
+    S second_iterator; // It for the second "range"
+    bool first_It;  // check if the first It end to be able move correctly to second It
     public:
 
-    iterator(typename T::iterator otherT ,typename E::iterator otherE ,typename T::iterator endT):
-        lit(otherT),rit(otherE),end_lit(endT)
+    iterator(F _first , S _sec):
+        first_iterator(_first),second_iterator(_sec) , first_It(true)
     {}
 
     iterator& operator ++(){
-        if(lit.t != end_lit.t){
-            ++lit;
-        }
-        else{
-        ++rit;
-        }
-       return *this;
+    if(first_It){first_iterator++;} // if we have more values in the first It
+    else {second_iterator++;}
     }
 
-    bool operator !=(const iterator& t0){
-        return (this->lit != t0.lit || this->rit != t0.rit);
+    bool operator !=(const chain::iterator<F,S>& o){ // in this operator function we can check if we cover all the first It
+       if(!(first_iterator != o.first_iterator)){ // when we run on for loop e.g (iterator i = ... ; i != something.end ...) so if they equal its mens we can move to It2
+          first_It = false;
+       }
+       if(first_It){return first_iterator != o.first_iterator;}
+       else{return second_iterator != o.second_iterator;}
     }
 
-    
     auto operator *(){
-        if (lit != end_lit)
+        if (first_It) // if we have more values in the first It
         {
-            return *lit;
+            return *first_iterator;
         }
         else
         {
-            return *rit;
+            return *second_iterator;
         }
         }
-        
-        //return pair(*lit,*rit);
+
         };
 
-    iterator begin(){
-            return iterator(t.begin(),e.begin(),t.end());
+    auto begin()const{
+            return iterator<T,E>(first.begin(), sec.begin());
         }
-    iterator end(){
-            return iterator(t.end(),e.end(),t.end());
+    auto end()const{
+            return iterator<T,E>(first.end(), sec.end());
         }
 
 
